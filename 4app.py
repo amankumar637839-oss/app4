@@ -83,8 +83,8 @@ if st.sidebar.button("Run Analysis"):
     model_fit = model.fit()
     forecast = model_fit.forecast(steps=forecast_days)
 
-    latest = float(close.iloc[-1])
-    predicted = float(forecast.iloc[-1])
+    latest = float(close.tail(1).values[0])
+  predicted = float(forecast[-1])
     growth = ((predicted - latest) / latest) * 100
 
     # Signal engine
